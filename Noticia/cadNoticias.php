@@ -2,8 +2,8 @@
 session_start();
 include 'conexao.php';
 
-// Verifica se é reporter ou admin
-if (!isset($_SESSION['usuario_id']) || ($_SESSION['tipo'] != 'reporter' && $_SESSION['tipo'] != 'admin')) {
+// Verifica se é reporter (admins não podem criar notícias devido à FK)
+if (!isset($_SESSION['usuario_id']) || $_SESSION['tipo'] != 'reporter') {
     header("Location: login.php");
     exit();
 }
@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $noticia = trim($_POST['noticia']);
     $autor = $_SESSION['usuario_id'];
     $tipo_autor = $_SESSION['tipo']; // 'reporter' ou 'admin'
+    $data = !empty($_POST['data']) ? $_POST['data'] : null;
     
     // Upload da imagem
     $imagem = "";
@@ -52,8 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($erro)) {
         if (!empty($titulo) && !empty($noticia)) {
             try {
-                $stmt = $conn->prepare("INSERT INTO noticias (titulo, noticia, autor, tipo_autor, imagem) VALUES (?, ?, ?, ?, ?)");
-                $stmt->bind_param("ssiss", $titulo, $noticia, $autor, $tipo_autor, $imagem);
+                if ($data) {
+                    $stmt = $conn->prepare("INSERT INTO noticias (titulo, noticia, data, autor, tipo_autor, imagem) VALUES (?, ?, ?, ?, ?, ?)");
+                    $stmt->bind_param("sssiss", $titulo, $noticia, $data, $autor, $tipo_autor, $imagem);
+                } else {
+                    $stmt = $conn->prepare("INSERT INTO noticias (titulo, noticia, autor, tipo_autor, imagem) VALUES (?, ?, ?, ?, ?)");
+                    $stmt->bind_param("ssiss", $titulo, $noticia, $autor, $tipo_autor, $imagem);
+                }
                 
                 if ($stmt->execute()) {
                     $_SESSION['sucesso'] = "Notícia publicada com sucesso!";
@@ -138,6 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
         input[type="text"],
+        input[type="datetime-local"],
         textarea {
             width: 100%;
             padding: 15px;
@@ -149,6 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
         input[type="text"]:focus,
+        input[type="datetime-local"]:focus,
         textarea:focus {
             outline: none;
             border-color: #b71c1c;
@@ -265,6 +273,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-group">
                 <label for="titulo">📋 Título da Notícia:</label>
                 <input type="text" id="titulo" name="titulo" placeholder="Digite um título chamativo e informativo" required maxlength="200">
+            </div>
+            
+            <div class="form-group">
+                <label for="data">📅 Data da Notícia (opcional):</label>
+                <input type="datetime-local" id="data" name="data" placeholder="Deixe em branco para usar a data atual">
+                <p class="ajuda">Se não informar, será usada a data e hora atuais.</p>
             </div>
             
             <div class="form-group">

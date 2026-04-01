@@ -106,7 +106,6 @@ $result = $conn->query($sql);
     <div class="header">
         <h1>📰 Regionais RS</h1>
         <div class="header-botoes">
-            <a href="cadNoticias.php" class="btn btn-criar">➕ Criar Notícia</a>
             <a href="gerenciar_usuarios.php" class="btn btn-usuarios">👥 Usuários</a>
             <a href="logout.php" class="btn btn-sair">🚪 Sair (<?php echo htmlspecialchars($_SESSION['nome']); ?>)</a>
         </div>
@@ -147,7 +146,7 @@ $result = $conn->query($sql);
         <?php else: ?>
             <div class="sem-noticias">
                 <p>📭 Nenhuma notícia cadastrada ainda.</p>
-                <a href="cadNoticias.php" class="btn btn-criar" style="margin-top: 20px;">➕ Criar Primeira Notícia</a>
+                <p>🔒 Apenas repórteres podem criar notícias.</p>
             </div>
         <?php endif; ?>
     </div>
