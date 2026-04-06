@@ -18,6 +18,7 @@
                 </div>
             </div>
             <nav>
+                
                 <a href="cadPublico.php">👤 Cadastro</a>
                 <a href="cadReporter.php">✍️ Reporter</a>
                 <a href="admin_auth.php">👑 Admin</a>
@@ -37,6 +38,7 @@
         <div class="hero-content">
             <h2>Notícias Gaúchas que Conectam Gerações</h2>
             <p>Acompanhe os principais acontecimentos do Rio Grande do Sul em tempo real</p>
+            <a href="noticias_publicas.php" class="cta-button">Ver Notícias</a>
         </div>
     </section>
 
