@@ -79,8 +79,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         button { background: linear-gradient(135deg, #b71c1c, #c62828); color: white; }
         .btn-voltar { background: #757575; color: white; }
         .erro { background: #ffebee; color: #b71c1c; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
-        .imagem-atual { margin: 10px 0; }
-        .imagem-atual img { max-width: 300px; border-radius: 5px; }
+        .imagem-atual { margin: 10px 0; display: flex; justify-content: center; align-items: center; background: #f5f5f5; border-radius: 8px; height: 300px; }
+        .imagem-atual img { max-height: 300px; max-width: 100%; object-fit: contain; border-radius: 5px; }
     </style>
 </head>
 <body>

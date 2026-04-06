@@ -39,7 +39,8 @@ $result = $conn->query($sql);
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        .header h1 { font-size: 1.8em; }
+        .header h1 { display: inline-flex; align-items: center; gap: 10px; font-size: 1.8em; }
+        .header-logo { width: 42px; height: auto; display: inline-block; }
         .header-botoes { display: flex; gap: 10px; }
         
         /* BOTÕES */
@@ -72,7 +73,7 @@ $result = $conn->query($sql);
             margin-bottom: 30px;
             overflow: hidden;
         }
-        .noticia-imagem { width: 100%; height: 250px; object-fit: cover; }
+        .noticia-imagem { width: 100%; height: 300px; object-fit: contain; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
         .noticia-conteudo { padding: 25px; }
         .noticia-titulo { color: #b71c1c; font-size: 1.6em; margin-bottom: 10px; }
         .noticia-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
@@ -104,9 +105,9 @@ $result = $conn->query($sql);
 <body>
     <!-- 🔴 CABEÇALHO -->
     <div class="header">
-        <h1>📰 Regionais RS</h1>
+        <h1><img src="img/Brasão_do_Rio_Grande_do_Sul.svg.png" alt="Brasão do Rio Grande do Sul" class="header-logo"> Regionais RS</h1>
         <div class="header-botoes">
-            <a href="gerenciar_usuarios.php" class="btn btn-usuarios">👥 Usuários</a>
+            <a href="usuario.php" class="btn btn-usuarios">👥 Usuários</a>
             <a href="logout.php" class="btn btn-sair">🚪 Sair (<?php echo htmlspecialchars($_SESSION['nome']); ?>)</a>
         </div>
     </div>

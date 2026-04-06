@@ -1,6 +1,12 @@
 <?php
 // === LÓGICA PHP NO TOPO ===
 session_start(); // ← IMPORTANTE: Inicia a sessão
+
+if (!isset($_SESSION['admin_access_granted']) || $_SESSION['admin_access_granted'] !== true) {
+    header('Location: admin_auth.php');
+    exit();
+}
+
 include 'conexao.php';
 
 $erro = "";

@@ -213,7 +213,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Seção de Login -->
         <div class="login-section">
             <p>Já tem cadastro?</p>
-            <a href="login_usuario.php" class="btn-login">🔐 Login</a>
+            <a href="login.php" class="btn-login">🔐 Login</a>
         </div>
     </form>
 

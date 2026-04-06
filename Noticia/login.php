@@ -183,7 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <div class="links">
             <p>Não tem conta?</p>
-            <a href="cadUsuario.php">Cadastre-se como Leitor</a> | 
+            <a href="cadPublico.php">Cadastre-se como Leitor</a> | 
             <a href="cadReporter.php">Cadastre-se como Repórter</a> | 
             <a href="cadAdmin.php">Cadastre-se como Admin</a>
         </div>

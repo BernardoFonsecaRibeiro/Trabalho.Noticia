@@ -1,0 +1,335 @@
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #b71c1c, #d32f2f);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .brasao-logo {
+            width: 50px;
+            height: auto;
+        }
+        
+        .site-title h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        
+        .site-title p {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin: 5px 0 0 0;
+        }
+        
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a, nav button {
+            background: white;
+            color: #b71c1c;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 0.95em;
+        }
+        
+        nav a:hover, nav button:hover {
+            background: #ffebee;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        
+        /* HERO BANNER */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/Porto-Alegre-Sinbraf.png') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .hero-content h2 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.5em;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ABOUT SECTION */
+        .about-section {
+            background: #f9f9f9;
+            padding: 60px 20px;
+            margin-bottom: 50px;
+            border-radius: 15px;
+        }
+        
+        .about-section h2 {
+            text-align: center;
+            color: #b71c1c;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            color: #b71c1c;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .about-text p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        /* FEATURES SECTION */
+        .features {
+            padding: 60px 20px;
+            margin-bottom: 50px;
+        }
+        
+        .features h2 {
+            text-align: center;
+            color: #b71c1c;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-content h3 {
+            color: #b71c1c;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+        
+        .card-content p {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+        
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, #b71c1c, #d32f2f);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 50px;
+            border-radius: 15px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-buttons a, .cta-buttons button {
+            padding: 14px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            transition: 0.3s;
+        }
+        
+        .cta-primary {
+            background: white;
+            color: #b71c1c;
+        }
+        
+        .cta-primary:hover {
+            background: #ffebee;
+            transform: translateY(-3px);
+        }
+        
+        .cta-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-secondary:hover {
+            background: white;
+            color: #b71c1c;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+        
+        footer a {
+            color: #ff6b35;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav a, nav button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.2em;
+            }
+            
+            .hero-content p {
+                font-size: 1.1em;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .features h2, .about-section h2 {
+                font-size: 2em;
+            }
+        }

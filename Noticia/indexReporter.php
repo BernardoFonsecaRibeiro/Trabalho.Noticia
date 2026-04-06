@@ -43,7 +43,8 @@ if (!$result) {
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        .header h1 { font-size: 2em; }
+        .header h1 { display: inline-flex; align-items: center; gap: 10px; font-size: 2em; }
+        .header-logo { width: 42px; height: auto; display: inline-block; }
         .header-botoes { display: flex; gap: 10px; }
         .btn {
             padding: 10px 20px;
@@ -57,6 +58,8 @@ if (!$result) {
         }
         .btn-criar { background: white; color: #b71c1c; }
         .btn-criar:hover { background: #ffebee; transform: translateY(-2px); }
+        .btn-editar { background: #2196F3; color: white; }
+        .btn-editar:hover { background: #1976D2; transform: translateY(-2px); }
         .btn-sair { background: rgba(255,255,255,0.2); color: white; }
         .btn-sair:hover { background: rgba(255,255,255,0.3); }
         .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
@@ -67,7 +70,7 @@ if (!$result) {
             margin-bottom: 30px;
             overflow: hidden;
         }
-        .noticia-imagem { width: 100%; height: 300px; object-fit: cover; }
+        .noticia-imagem { width: 100%; height: 300px; object-fit: contain; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
         .noticia-conteudo { padding: 25px; }
         .noticia-titulo { color: #b71c1c; font-size: 1.8em; margin-bottom: 10px; }
         .noticia-meta {
@@ -112,10 +115,11 @@ if (!$result) {
 </head>
 <body>
     <div class="header">
-        <h1>📰 Regionais RS</h1>
+        <h1><img src="img/Brasão_do_Rio_Grande_do_Sul.svg.png" alt="Brasão do Rio Grande do Sul" class="header-logo"> Regionais RS</h1>
         <div class="header-botoes">
+            <a href="editar_perfil.php" class="btn btn-editar">👤 Editar conta</a>
             <a href="cadNoticias.php" class="btn btn-criar">➕ Criar Notícia</a>
-            <a href="logout.php" class="btn btn-sair">🚪 Sair</a>
+            <a href="logout.php" class="btn btn-sair">🚪 Sair </a>
         </div>
     </div>
 
