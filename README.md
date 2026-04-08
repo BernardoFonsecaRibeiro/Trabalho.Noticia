@@ -353,13 +353,3 @@ O administrador tem controle total sobre notícias e usuários.
 Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
-
-## 📞 Suporte
-
-Se você encontrar algum problema ou tiver dúvidas:
-
-1. Verifique a seção "Problemas Conhecidos" acima
-2. Abra uma **Issue** neste repositório
-3. Entre em contato com o autor
-
----
