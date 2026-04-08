@@ -55,10 +55,17 @@ if ($totalResult) {
         }
         
         .noticia-card { background: white; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .noticia-imagem { width: 100%; height: 300px; object-fit: contain; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
+        .noticia-imagem { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+            background: #f5f5f5; 
+            display: block; 
+        }
         .noticia-conteudo { padding: 25px; }
         .noticia-titulo { color: #b71c1c; font-size: 1.6em; margin-bottom: 10px; }
         .noticia-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .noticia-preview { color: #333; line-height: 1.6; font-size: 0.95em; margin-bottom: 15px; }
         .noticia-texto { color: #333; line-height: 1.8; font-size: 1em; white-space: pre-wrap; }
         .info-rodape { background: #f0f0f0; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
         .info-rodape p { margin-bottom: 10px; color: #333; }
@@ -97,6 +104,9 @@ if ($totalResult) {
                             <h2 class="noticia-titulo"><a href="noticia.php?id=<?php echo $noticia['id']; ?>" style="text-decoration: none; color: inherit;"><?php echo htmlspecialchars($noticia['titulo']); ?></a></h2>
                             <div class="noticia-meta">
                                 <strong>📅 Publicado:</strong> <?php echo date('d/m/Y H:i', strtotime($noticia['data'])); ?>
+                            </div>
+                            <div class="noticia-preview">
+                                <?php echo htmlspecialchars(substr($noticia['noticia'], 0, 150)) . (strlen($noticia['noticia']) > 150 ? '...' : ''); ?>
                             </div>
                         </div>
                     </div>

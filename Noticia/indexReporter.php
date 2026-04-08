@@ -77,7 +77,13 @@ if (!$result) {
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        .noticia-imagem { width: 100%; height: 300px; object-fit: contain; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
+        .noticia-imagem { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+            background: #f5f5f5; 
+            display: block; 
+        }
         .noticia-conteudo { padding: 25px; }
         .noticia-titulo { color: #b71c1c; font-size: 1.8em; margin-bottom: 10px; }
         .noticia-meta {
@@ -87,6 +93,7 @@ if (!$result) {
             padding-bottom: 15px;
             border-bottom: 1px solid #eee;
         }
+        .noticia-preview { color: #333; line-height: 1.6; font-size: 0.95em; margin-bottom: 15px; }
         .noticia-texto { color: #333; line-height: 1.8; font-size: 1.1em; }
         .noticia-acoes {
             padding: 15px 25px;
@@ -156,6 +163,9 @@ if (!$result) {
                             <div class="noticia-meta">
                                 <strong>👤 Autor:</strong> <?php echo htmlspecialchars($noticia['nome_autor']); ?> | 
                                 <strong>📅 Data:</strong> <?php echo date('d/m/Y H:i', strtotime($noticia['data'])); ?>
+                            </div>
+                            <div class="noticia-preview">
+                                <?php echo htmlspecialchars(substr($noticia['noticia'], 0, 150)) . (strlen($noticia['noticia']) > 150 ? '...' : ''); ?>
                             </div>
                         </div>
                         

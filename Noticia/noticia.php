@@ -89,7 +89,13 @@ $nome_usuario = $usuario_logado ? $_SESSION['nome'] : null;
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        .noticia-imagem { width: 100%; height: 400px; object-fit: contain; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
+        .noticia-imagem { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            background: #f5f5f5; 
+            display: block; 
+        }
         .noticia-conteudo { padding: 25px; }
         .noticia-titulo { color: #b71c1c; font-size: 2em; margin-bottom: 10px; }
         .noticia-meta { color: #666; font-size: 0.9em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
