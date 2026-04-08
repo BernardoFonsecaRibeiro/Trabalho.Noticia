@@ -85,7 +85,75 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .login-section p { color: #666; font-size: 0.95em; margin-bottom: 10px; }
         .btn-login { display: inline-block; width: 100%; padding: 12px; background: white; color: #b71c1c; border: 2px solid #b71c1c; border-radius: 5px; text-decoration: none; font-weight: bold; transition: 0.3s; }
         .btn-login:hover { background: #b71c1c; color: white; }
+        
+        .loading-msg {
+            color: #2196F3;
+            font-size: 0.85em;
+            margin-top: 5px;
+            display: none;
+        }
     </style>
+    <script>
+        // Função para buscar dados do CEP via ViaCEP
+        function buscarCEP() {
+            const cepInput = document.getElementById('cep');
+            const cep = cepInput.value.replace(/\D/g, ''); // Remove não-dígitos
+            
+            // Apenas busca se o CEP tiver 8 dígitos
+            if (cep.length !== 8) {
+                return;
+            }
+            
+            const loadingMsg = document.getElementById('loading-msg');
+            loadingMsg.style.display = 'block';
+            
+            // Faz a requisição para a API ViaCEP
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    loadingMsg.style.display = 'none';
+                    
+                    // Verifica se o CEP é válido
+                    if (data.erro) {
+                        alert('❌ CEP não encontrado!');
+                        // Limpa os campos
+                        document.getElementById('rua').value = '';
+                        document.getElementById('bairro').value = '';
+                        document.getElementById('cidade').value = '';
+                        document.getElementById('estado').value = '';
+                        return;
+                    }
+                    
+                    // Preenche os campos com os dados da API
+                    document.getElementById('rua').value = data.logradouro || '';
+                    document.getElementById('bairro').value = data.bairro || '';
+                    document.getElementById('cidade').value = data.localidade || '';
+                    document.getElementById('estado').value = data.uf || '';
+                    
+                    // Foca no campo de número/complemento se houver
+                    document.getElementById('rua').focus();
+                })
+                .catch(error => {
+                    loadingMsg.style.display = 'none';
+                    console.error('Erro ao buscar CEP:', error);
+                    alert('❌ Erro ao buscar CEP. Tente novamente.');
+                });
+        }
+        
+        // Monitora mudanças no campo de CEP
+        document.addEventListener('DOMContentLoaded', function() {
+            const cepInput = document.getElementById('cep');
+            if (cepInput) {
+                cepInput.addEventListener('blur', buscarCEP);
+                // Também busca ao pressionar Enter
+                cepInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        buscarCEP();
+                    }
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <form method="POST" action="">
@@ -97,11 +165,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" name="telefone" placeholder="Telefone" required>
         <hr>
         <p class="section-title">📍 Dados de Endereço</p>
-        <input type="text" name="cep" placeholder="CEP" required>
-        <input type="text" name="rua" placeholder="Rua" required>
-        <input type="text" name="bairro" placeholder="Bairro" required>
-        <input type="text" name="cidade" placeholder="Cidade" required>
-        <input type="text" name="estado" placeholder="Estado (ex: SP)" required>
+        <input type="text" name="cep" id="cep" placeholder="CEP" required>
+        <div class="loading-msg" id="loading-msg">⏳ Buscando informações...</div>
+        <input type="text" name="rua" id="rua" placeholder="Rua" required>
+        <input type="text" name="bairro" id="bairro" placeholder="Bairro" required>
+        <input type="text" name="cidade" id="cidade" placeholder="Cidade" required>
+        <input type="text" name="estado" id="estado" placeholder="Estado (ex: SP)" required>
         <button type="submit">Cadastrar Admin</button>
         <a href="index.php" class="voltar">← Voltar</a>
         <div class="login-section">
