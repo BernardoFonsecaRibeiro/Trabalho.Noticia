@@ -328,19 +328,6 @@ Ideal para busca de oportunidades de emprego na área de desenvolvimento web.
 
 ---
 
-## 📸 Screenshots
-
-### Página Inicial
-![Página Inicial](img/Brasão_do_Rio_Grande_do_Sul.svg.png)
-
-### Painel do Repórter
-O repórter pode criar notícias com upload de imagens e gerenciar suas publicações.
-
-### Painel do Administrador
-O administrador tem controle total sobre notícias e usuários.
-
----
-
 ## 🐛 Problemas Conhecidos
 
 - Certifique-se de que o XAMPP está rodando antes de acessar a aplicação
