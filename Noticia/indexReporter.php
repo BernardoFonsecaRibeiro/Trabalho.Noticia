@@ -63,11 +63,18 @@ if (!$result) {
         .btn-sair { background: rgba(255,255,255,0.2); color: white; }
         .btn-sair:hover { background: rgba(255,255,255,0.3); }
         .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        
+        /* GRID DE NOTÍCIAS */
+        .noticias-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
         .noticia-card {
             background: white;
             border-radius: 10px;
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
             overflow: hidden;
         }
         .noticia-imagem { width: 100%; height: 300px; object-fit: contain; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
@@ -137,31 +144,30 @@ if (!$result) {
         
         
         <?php if ($result->num_rows > 0): ?>
-            <?php while($noticia = $result->fetch_assoc()): ?>
-                <div class="noticia-card">
-                    <?php if(!empty($noticia['imagem']) && file_exists($noticia['imagem'])): ?>
-                        <img src="<?php echo $noticia['imagem']; ?>" alt="<?php echo htmlspecialchars($noticia['titulo']); ?>" class="noticia-imagem">
-                    <?php endif; ?>
-                    
-                    <div class="noticia-conteudo">
-                        <h2 class="noticia-titulo"><?php echo htmlspecialchars($noticia['titulo']); ?></h2>
-                        <div class="noticia-meta">
-                            <strong>👤 Autor:</strong> <?php echo htmlspecialchars($noticia['nome_autor']); ?> | 
-                            <strong>📅 Data:</strong> <?php echo date('d/m/Y H:i', strtotime($noticia['data'])); ?>
+            <div class="noticias-grid">
+                <?php while($noticia = $result->fetch_assoc()): ?>
+                    <div class="noticia-card">
+                        <?php if(!empty($noticia['imagem']) && file_exists($noticia['imagem'])): ?>
+                            <img src="<?php echo $noticia['imagem']; ?>" alt="<?php echo htmlspecialchars($noticia['titulo']); ?>" class="noticia-imagem">
+                        <?php endif; ?>
+                        
+                        <div class="noticia-conteudo">
+                            <h2 class="noticia-titulo"><a href="noticia.php?id=<?php echo $noticia['id']; ?>" style="text-decoration: none; color: inherit;"><?php echo htmlspecialchars($noticia['titulo']); ?></a></h2>
+                            <div class="noticia-meta">
+                                <strong>👤 Autor:</strong> <?php echo htmlspecialchars($noticia['nome_autor']); ?> | 
+                                <strong>📅 Data:</strong> <?php echo date('d/m/Y H:i', strtotime($noticia['data'])); ?>
+                            </div>
                         </div>
-                        <div class="noticia-texto">
-                            <?php echo nl2br(htmlspecialchars($noticia['noticia'])); ?>
-                        </div>
+                        
+                        <?php if($noticia['autor'] == $_SESSION['usuario_id'] || $_SESSION['tipo'] == 'admin'): ?>
+                            <div class="noticia-acoes">
+                                <a href="editar_noticia.php?id=<?php echo $noticia['id']; ?>" class="btn btn-editar">✏️ Editar</a>
+                                <a href="excluir_noticia.php?id=<?php echo $noticia['id']; ?>" class="btn btn-excluir" onclick="return confirm('Tem certeza que deseja excluir esta notícia?')">🗑️ Excluir</a>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                    
-                    <?php if($noticia['autor'] == $_SESSION['usuario_id'] || $_SESSION['tipo'] == 'admin'): ?>
-                        <div class="noticia-acoes">
-                            <a href="editar_noticia.php?id=<?php echo $noticia['id']; ?>" class="btn btn-editar">✏️ Editar</a>
-                            <a href="excluir_noticia.php?id=<?php echo $noticia['id']; ?>" class="btn btn-excluir" onclick="return confirm('Tem certeza que deseja excluir esta notícia?')">🗑️ Excluir</a>
-                        </div>
-                    <?php endif; ?>
-                </div>
-            <?php endwhile; ?>
+                <?php endwhile; ?>
+            </div>
         <?php else: ?>
             <div class="sem-noticias">
                 <p>📭 Nenhuma notícia cadastrada ainda.</p>

@@ -65,12 +65,18 @@ $result = $conn->query($sql);
         /* CONTEÚDO */
         .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
         
+        /* GRID DE NOTÍCIAS */
+        .noticias-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
         /* CARD DE NOTÍCIA */
         .noticia-card {
             background: white;
             border-radius: 10px;
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
             overflow: hidden;
         }
         .noticia-imagem { width: 100%; height: 300px; object-fit: contain; background: #f5f5f5; display: flex; align-items: center; justify-content: center; }
@@ -136,24 +142,22 @@ $result = $conn->query($sql);
         
         <!-- Lista de Notícias -->
         <?php if ($result && $result->num_rows > 0): ?>
-            <?php while($noticia = $result->fetch_assoc()): ?>
-                <div class="noticia-card">
-                    <?php if(!empty($noticia['imagem'])): ?>
-                        <img src="<?php echo htmlspecialchars($noticia['imagem']); ?>" alt="<?php echo htmlspecialchars($noticia['titulo']); ?>" class="noticia-imagem">
-                    <?php endif; ?>
-                    
-                    <div class="noticia-conteudo">
-                        <h2 class="noticia-titulo"><?php echo htmlspecialchars($noticia['titulo']); ?></h2>
-                        <div class="noticia-meta">
-                            <strong>👤 Autor:</strong> <?php echo htmlspecialchars($noticia['nome_autor'] ?? 'Desconhecido'); ?> | 
-                            <strong>📅 Data:</strong> <?php echo date('d/m/Y H:i', strtotime($noticia['data'])); ?>
-                        </div>
-                        <div class="noticia-texto">
-                            <?php echo htmlspecialchars($noticia['noticia']); ?>
+            <div class="noticias-grid">
+                <?php while($noticia = $result->fetch_assoc()): ?>
+                    <div class="noticia-card">
+                        <?php if(!empty($noticia['imagem'])): ?>
+                            <img src="<?php echo htmlspecialchars($noticia['imagem']); ?>" alt="<?php echo htmlspecialchars($noticia['titulo']); ?>" class="noticia-imagem">
+                        <?php endif; ?>
+                        
+                        <div class="noticia-conteudo">
+                            <h2 class="noticia-titulo"><a href="noticia.php?id=<?php echo $noticia['id']; ?>" style="text-decoration: none; color: inherit;"><?php echo htmlspecialchars($noticia['titulo']); ?></a></h2>
+                            <div class="noticia-meta">
+                                <strong>📅 Publicado:</strong> <?php echo date('d/m/Y H:i', strtotime($noticia['data'])); ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endwhile; ?>
+                <?php endwhile; ?>
+            </div>
         <?php else: ?>
             <div class="sem-noticias">
                 <p>📭 Nenhuma notícia cadastrada ainda.</p>
