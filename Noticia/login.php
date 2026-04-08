@@ -177,9 +177,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label>Senha:</label>
                 <input type="password" name="senha" placeholder="••••••••" required>
             </div>
+
+             <!-- Botão de voltar -->
+       
             
             <button type="submit">🚀 Entrar</button>
         </form>
+
+         <!-- Botão de voltar -->
+        <a href="index.php" class="voltar">← Voltar</a>
         
         <div class="links">
             <p>Não tem conta?</p>
