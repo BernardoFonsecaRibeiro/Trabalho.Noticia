@@ -78,6 +78,11 @@ $result = $conn->query($sql);
             border-radius: 10px;
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .noticia-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         .noticia-imagem { 
             width: 100%; 
