@@ -283,7 +283,7 @@ O sistema possui **3 tipos de usuários**:
 
 ## Imagem
 
-![Descrição da imagem])
+![noticias](https://github.com/user-attachments/assets/b72d7074-daa4-4489-a022-b5becf188da4)
 
 ---
 
