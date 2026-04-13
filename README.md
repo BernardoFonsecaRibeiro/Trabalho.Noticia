@@ -285,8 +285,11 @@ O sistema possui **3 tipos de usuários**:
 
 ![noticias](https://github.com/user-attachments/assets/b72d7074-daa4-4489-a022-b5becf188da4)
 
+---
+
 ![imagemcad](https://github.com/user-attachments/assets/e4ffed62-7b73-45ce-b7b9-5a9694efe720)
 
+---
 ![Gaucho jpng](https://github.com/user-attachments/assets/5831fe51-f75a-48fc-b9e7-5ccc41dabc20)
 
 
