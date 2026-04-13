@@ -281,6 +281,12 @@ O sistema possui **3 tipos de usuários**:
 
 ---
 
+## Imagem
+
+![Descrição da imagem])
+
+---
+
 ## 🔐 Segurança
 
 - ✅ **Senhas criptografadas** usando `password_hash()` do PHP
