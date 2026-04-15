@@ -292,6 +292,8 @@ O sistema possui **3 tipos de usuários**:
 ---
 ![Gaucho jpng](https://github.com/user-attachments/assets/5831fe51-f75a-48fc-b9e7-5ccc41dabc20)
 
+---
+<img width="416" height="557" alt="noticias-reposividade" src="https://github.com/user-attachments/assets/ab9f89fe-acb8-4812-a775-774036e222ae" />
 
 
 ---
